@@ -1,0 +1,13 @@
+<html>
+<body>
+    {{#page}}
+    <h1>{{name}}</h1>
+    <h3>{{template}}</h3>
+	<div class="container">
+	{{#sections}}
+    	{{>module/section}}
+    {{/sections}}
+	</div>
+    {{/page}}
+</body>
+</html>

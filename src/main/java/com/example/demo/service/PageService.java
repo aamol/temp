@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.DataSource;
@@ -24,10 +26,15 @@ public class PageService {
 	private TileRepository tileRepository;
 	
 	private DataSourceRepository dataSourceRepository;
+	
+	private DataSourceService dataSourceService; 
 
 	public Page getPageDetails(Long pageId) {
 		
-		return pageRepository.findById(pageId).get();
+		Page page = pageRepository.findById(pageId).get();
+		
+		
+		return dataSourceService.extractDataFromSource(page);
 	}
 
 	public String init() {
@@ -44,7 +51,8 @@ public class PageService {
 		tile.setTemplate("Template 2");
 		
 		DataSource dataSource =  new DataSource();
-		dataSource.setContent("test text");
+		dataSource.setType("CONTENT");
+		dataSource.setQuery("Test Data");
 
 		section.setPage(page);
 		

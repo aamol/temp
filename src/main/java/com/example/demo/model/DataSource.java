@@ -10,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,6 +19,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "data_source")
 public class DataSource {
 
 	@Id
@@ -28,6 +30,12 @@ public class DataSource {
 	@JoinColumn(columnDefinition = "tile_id")
 	@JsonIgnore
 	private Tile tile;
+	
+	private String type;
+	
+	private String dataconn;
+	
+	private String query;
 	
 	private String content;
 }
